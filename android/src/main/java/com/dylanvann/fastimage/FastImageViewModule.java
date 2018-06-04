@@ -40,23 +40,13 @@ class FastImageViewModule extends ReactContextBaseJavaModule {
                     final ReadableMap source = sources.getMap(i);
                     final GlideUrl glideUrl = FastImageViewConverter.glideUrl(source);
                     final Priority priority = FastImageViewConverter.priority(source);
-                    if (glideUrl.toStringUrl().startsWith("http://") || glideUrl.toStringUrl().startsWith("https://")) {
-                        Glide
-                                .with(activity.getApplicationContext())
-                                .load(glideUrl)
-                                .priority(priority)
-                                .placeholder(TRANSPARENT_DRAWABLE)
-                                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                                .preload();
-                    } else {
-                        Glide
-                                .with(activity.getApplicationContext())
-                                .load(glideUrl.toStringUrl())
-                                .priority(priority)
-                                .placeholder(TRANSPARENT_DRAWABLE)
-                                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                                .preload();
-                    }
+                    Glide
+                            .with(activity.getApplicationContext())
+                            .load(glideUrl)
+                            .priority(priority)
+                            .placeholder(TRANSPARENT_DRAWABLE)
+                            .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                            .preload();
                 }
             }
         });
